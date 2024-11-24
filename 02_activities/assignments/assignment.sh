@@ -35,11 +35,11 @@ mkdir ./data/processed
 mkdir ./data/processed/{server,user,event}_logs
 
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
-find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "server*" | xargs -I {} mv {} ./data/processed/server_logs/
+find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "*server*" | xargs -I {} mv {} ./data/processed/server_logs/
 
 # 6. Repeat the above step for user logs and event logs
-find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "user*" | xargs -I {} mv {} ./data/processed/user_logs/
-find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "event*" | xargs -I {} mv {} ./data/processed/event_logs/
+find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "*user*" | xargs -I {} mv {} ./data/processed/user_logs/
+find ./data/raw/ -type f -iname "*.log" | xargs -I{} find '{}' -iname "*event*" | xargs -I {} mv {} ./data/processed/event_logs/
 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
 rm ./data/raw/*ipaddr*
